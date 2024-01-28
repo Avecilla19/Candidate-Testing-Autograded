@@ -28,7 +28,7 @@ let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  const input = require('readline-sync');
+  //const input = require('readline-sync');
   
   let name = input.question("Hello, What is your name? ");
   candidateName = name;
@@ -37,22 +37,28 @@ function askForName() {
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (let i = 0; i < questions.length; i++) {
-  questions = input.question(`${questions[i]} Enter your answer: `);
-     candidateAnswers.push(candidateAnswers);
+    candidateAnswer = input.question(questions[i]);
+    candidateAnswers.push(candidateAnswer);
+  
+    /*questions = input.question(questions[i], `Enter your answer: `);
+     candidateAnswers.push(candidateAnswers);*/
     }
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  for (let i = 0; i < questions.length; i++){
-   /* candidateAnswers = candidateAnswers[i];
-    correctAnswers = correctAnswers[i]; */
-    console.log(`Question ${i + 1}: You answered - ${candidateAnswers}`)
+ let totalScore = 0;
+  for (let i = 0; i<candidateAnswers.length; i++){
+    if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()){
+      totalScore++;
+    } 
+    
+    /*else {
+      console.log(`Incorrect answer.`)
+    }*/
   }
-
-
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade =(totalScore * 20);  //TODO 3.2 use this variable to calculate the candidates score.
 
 
   return grade;
